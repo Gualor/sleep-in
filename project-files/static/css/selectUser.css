@@ -1,0 +1,59 @@
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+#userrow:hover {
+  background-color: #d4f9f5;
+}
+
+#userrow.active {
+  background-color: #3ab5a4;
+  color: white;
+}
+
+#selectuser {
+  display: block;
+  margin: 0 auto;
+}
+
+.table-wrapper-scroll-y.my-custom-scrollbar {
+  height: 30%;
+}
+
+<style>.helpblock {
+  color: gray;
+}
+
+.table_container {
+  margin: 0 auto;
+  width: 1000px;
+  background-color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+th,
+td {
+  padding: 10px;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 200px;
+  overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+  display: block;
+}
+
+form {
+  height: 100%;
+  z-index: 0;
+}
+
+#users {
+  width: 45%;
+  height: 100%;
+}

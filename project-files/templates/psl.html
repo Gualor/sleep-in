@@ -1,0 +1,240 @@
+<html>
+
+<head>
+    <title> SleepIN - PSL </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="static/images/icons/sin.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/psl.css">
+
+    <!--===============================================================================================-->
+</head>
+
+
+<body style="background-color: #d0d0d0">
+    <!-- <center><h1>SLEEPIN</h1></center>-->
+    <!--SIDEBAR-->
+    <div id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <div id="avatar-cont">
+                <img id="avatar" src="static/images/med_avatar.png" width="100">
+            </div>
+            <div id="name-cont">
+                <center>
+                    <h4> {{ first }} {{ sur }} </h4>
+                </center>
+            </div>
+            <div id="funct-container">
+                <li><a href="selectUserBook"> Book visit</a></li>
+                <li><a href="selectVisit"> Edit visit </a></li>
+                <li><a href="selectUserThresh"> Set thresholds </a></li>
+                <li><a href="selectPatAbno"> Check abnormalities </a></li>
+                <li><a href="selectUserParam"> Visualize statistics </a></li>
+                <li><a href="login"> Log out</a></li>
+            </div>
+        </ul>
+    </div>
+
+    <!--BANNER-->
+    <div id="banner">
+        <div id="image">
+            <center><a href="medician"><img src="static/images/artboard.png" width="300"></a></center>
+        </div>
+    </div>
+</body>
+
+<form action="" method="post" class="form-horizontal form-psqi">
+    <fieldset>
+        </br>
+
+        <div class="table_container">
+            </br>
+            <!-- Form Name -->
+            <div align="center">
+                <legend>
+                    <h3>Perceived Stess Scale</h3>
+                </legend>
+            </div>
+            </br>
+
+
+            <!-- PATIENT ID-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="specialization">Patient ID:</label>
+                <div class="col-md-4">
+                    <input id="PatientID" name="PatientID" type="text" placeholder="PatientID" class="form-control input-md" value="{{
+    request.form.PatientID }}{{ user['PatientID'] }}" readonly>
+                    </br>
+                </div>
+            </div>
+
+            <!-- MEDICIAN ID-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="specialization">Visit ID:</label>
+                <div class="col-md-4">
+                    <input id="VisitID" name="VisitID" type="text" placeholder="VisitID" class="form-control input-md" value="{{
+    request.form.VisitID }}{{ user['VisitID'] }}" readonly>
+                    </br>
+                </div>
+            </div>
+
+            </br>
+            <!-- Select Basic -->
+            <div class="istructions">
+
+                <head class="col-md-4 control-label">The questions in this questionnaire ask you about your feelings and thoughts during the last month. In each case, you will be asked to indicate how often you felt or thought a certain way.</head>
+            </div>
+
+            </br>
+
+
+            <table class="tg">
+                <tr>
+                    <td class="tg-s268">
+                        <div class="questions"></div>
+                    </td>
+                    <td class="tg-buh4">Never<br>(0)</td>
+                    <td class="tg-buh4">Almost never<br>(1)</td>
+                    <td class="tg-buh4">Sometimes<br>(2)</td>
+                    <td class="tg-buh4">Fairly Often<br>(3)</td>
+                    <td class="tg-buh4">Very often<br>(4)</td>
+
+                </tr>
+
+                <tr>
+                    <td class="tg-s268">
+                        <div class="questions"> 1. In the last month, how often have you been upset because of something that happened unexpectedly?</div>
+                    </td>
+                    <td class="tg-buh4"><input type="radio" name="quest1" id="radios-0" value="0" checked></td>
+                    <td class="tg-buh4"><input type="radio" name="quest1" id="radios-1" value="1"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest1" id="radios-2" value="2"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest1" id="radios-3" value="3"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest1" id="radios-4" value="4"></td>
+
+                </tr>
+                <tr>
+                    <td class="tg-s268">
+                        <div class="questions"> 2. In the last month, how often have you felt that you were unable to control the important things in your life? </div>
+                    </td>
+                    <td class="tg-buh4"><input type="radio" name="quest2" id="radios-0" value="0" checked></td>
+                    <td class="tg-buh4"><input type="radio" name="quest2" id="radios-1" value="1"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest2" id="radios-2" value="2"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest2" id="radios-3" value="3"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest2" id="radios-4" value="4"></td>
+                </tr>
+                <tr>
+                    <td class="tg-s268">
+                        <div class="questions"> 3. In the last month, how often have you felt nervous and “stressed”?</div>
+                    </td>
+                    <td class="tg-buh4"><input type="radio" name="quest3" id="radios-0" value="0" checked></td>
+                    <td class="tg-buh4"><input type="radio" name="quest3" id="radios-1" value="1"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest3" id="radios-2" value="2"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest3" id="radios-3" value="3"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest3" id="radios-4" value="4"></td>
+                </tr>
+                <tr>
+                    <td class="tg-s268">
+                        <div class="questions">4. In the last month, how often have you felt confident about your ability to handle your personal problems?</div>
+                    </td>
+                    <td class="tg-buh4"><input type="radio" name="quest4" id="radios-0" value="0" checked></td>
+                    <td class="tg-buh4"><input type="radio" name="quest4" id="radios-1" value="1"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest4" id="radios-2" value="2"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest4" id="radios-3" value="3"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest4" id="radios-4" value="4"></td>
+                </tr>
+                <tr>
+                    <td class="tg-s268">
+                        <div class="questions"> 5. In the last month, how often have you felt that things were going your way?</div>
+                    </td>
+                    <td class="tg-buh4"><input type="radio" name="quest5" id="radios-0" value="0" checked></td>
+                    <td class="tg-buh4"><input type="radio" name="quest5" id="radios-1" value="1"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest5" id="radios-2" value="2"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest5" id="radios-3" value="3"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest5" id="radios-4" value="4"></td>
+                </tr>
+                <tr>
+                    <td class="tg-s268">
+                        <div class="questions"> 6. In the last month, how often have you found that you could not cope with all the things that you had to do?</div>
+                    </td>
+                    <td class="tg-buh4"><input type="radio" name="quest6" id="radios-0" value="0" checked></td>
+                    <td class="tg-buh4"><input type="radio" name="quest6" id="radios-1" value="1"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest6" id="radios-2" value="2"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest6" id="radios-3" value="3"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest6" id="radios-4" value="4"></td>
+                </tr>
+                <tr>
+                    <td class="tg-s268">
+                        <div class="questions"> 7. In the last month, how often have you been able to control irritations in your life?</div>
+                    </td>
+                    <td class="tg-buh4"><input type="radio" name="quest7" id="radios-0" value="0" checked></td>
+                    <td class="tg-buh4"><input type="radio" name="quest7" id="radios-1" value="1"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest7" id="radios-2" value="2"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest7" id="radios-3" value="3"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest7" id="radios-4" value="4"></td>
+                </tr>
+                <tr>
+                    <td class="tg-s268">
+                        <div class="questions"> 8. In the last month, how often have you felt that you were on top of things?</div>
+                    </td>
+                    <td class="tg-buh4"><input type="radio" name="quest8" id="radios-0" value="0" checked></td>
+                    <td class="tg-buh4"><input type="radio" name="quest8" id="radios-1" value="1"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest8" id="radios-2" value="2"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest8" id="radios-3" value="3"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest8" id="radios-4" value="4"></td>
+                </tr>
+                <tr>
+                    <td class="tg-s268">
+                        <div class="questions"> 9. In the last month, how often have you been angered because of things that were outside of your control?</div>
+                    </td>
+                    <td class="tg-buh4"><input type="radio" name="quest9" id="radios-0" value="0" checked></td>
+                    <td class="tg-buh4"><input type="radio" name="quest9" id="radios-1" value="1"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest9" id="radios-2" value="2"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest9" id="radios-3" value="3"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest9" id="radios-4" value="4"></td>
+                </tr>
+                <tr>
+                    <td class="tg-s268">
+                        <div class="questions"> 10. In the last month, how often have you felt difficulties were piling up so high that you could not overcome them?
+                        </div>
+                    </td>
+                    <td class="tg-buh4"><input type="radio" name="quest10" id="radios-0" value="0" checked></td>
+                    <td class="tg-buh4"><input type="radio" name="quest10" id="radios-1" value="1"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest10" id="radios-2" value="2"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest10" id="radios-3" value="3"></td>
+                    <td class="tg-buh4"><input type="radio" name="quest10" id="radios-4" value="4"></td>
+                </tr>
+            </table>
+            </br>
+            <!-- Button -->
+
+            <div class="form-butt">
+                <center><input id="singlebutton" name="singlebutton" type="submit" class="btn butt" value="SUBMIT"></center>
+            </div>
+            </br>
+    </fieldset>
+    </br>
+    </br>
+</form>
+<script src="static/js/dashboard.js"></script>
+
+</html>

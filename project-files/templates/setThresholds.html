@@ -1,0 +1,304 @@
+<html>
+
+<head>
+    <title> SleepIN - Edit Thresholds </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="static/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="static/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="static/css/editUser.css">
+
+</head>
+
+<body style="background-color: #d0d0d0">
+
+    <!-- -->
+    <style>
+        #helpblock {
+            color: gray;
+        }
+
+        .table_container {
+            margin: 0 auto;
+            width: 1000px;
+            background-color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        }
+
+    </style>
+
+    <!--SIDEBAR MENU==============================================================================-->
+    <div id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <div id="avatar-cont">
+                <img id="avatar" src="static/images/med_avatar.png" width="100">
+            </div>
+            <div id="name-cont">
+                <center>
+                    <h4> {{ first }} {{ sur }} </h4>
+                </center>
+            </div>
+            <div id="funct-container">
+                <li><a href="selectUserBook"> Book visit</a></li>
+                <li><a href="selectVisit"> Edit visit </a></li>
+                <li><a href="selectUserThresh"> Set thresholds </a></li>
+                <li><a href="selectPatAbno"> Check abnormalities </a></li>
+                <li><a href="selectUserParam"> Visualize statistics </a></li>
+                <li><a href="login"> Log out</a></li>
+            </div>
+        </ul>
+    </div>
+    <!--BANNER==============================================================================-->
+    <div id="banner">
+        <div id="image">
+            <center><a href="medician"><img src="static/images/artboard.png" width="300"></a></center>
+        </div>
+    </div>
+</body>
+<!--FORM==============================================================================-->
+<center>
+    <form class="form-inline" action="" method="post" onsubmit="return confirm('Do you really want to submit the form?');">
+        <fieldset>
+            </br>
+
+            <div class="table_container">
+                </br>
+                <!-- Form Name -->
+                <legend>
+                    <h3>Edit Thresholds</h3>
+                </legend>
+
+
+                <!-- ID-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">Patient ID:</label>
+                    <div class="col-md-4">
+                        <input id="PatientID" name="PatientID" type="text" placeholder="PatientID" class="form-control input-md" value="{{
+          request.form.PatientID }}{{ user['PatientID'] }}" readonly>
+                        </br>
+                    </div>
+                </div>
+
+                <!-- USERNAME-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">HRMin:</label>
+                    <div class="col-md-4">
+                        <input id="HRMin" name="HRMin" type="text" placeholder="HRMin" class="form-control input-md" value="{{
+          request.form.HRMin }}{{ user['HRMin'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">HRMax:</label>
+                    <div class="col-md-4">
+                        <input id="HRMax" name="HRMax" type="text" placeholder="HRMax" class="form-control input-md" value="{{
+          request.form.HRMax }}{{ user['HRMax'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">SPMin:</label>
+                    <div class="col-md-4">
+                        <input id="SPMin" name="SPMin" type="text" placeholder="SPMin" class="form-control input-md" value="{{
+          request.form.SPMin }}{{ user['SPMin'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">SPMax:</label>
+                    <div class="col-md-4">
+                        <input id="SPMax" name="SPMax" type="text" placeholder="SPMax" class="form-control input-md" value="{{
+          request.form.SPMax }}{{ user['SPMax'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">DPMin:</label>
+                    <div class="col-md-4">
+                        <input id="DPMin" name="DPMin" type="text" placeholder="DPMin" class="form-control input-md" value="{{
+          request.form.DPMin }}{{ user['DPMin'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">DPMax:</label>
+                    <div class="col-md-4">
+                        <input id="DPMax" name="DPMax" type="text" placeholder="DPMax" class="form-control input-md" value="{{
+          request.form.DPMax }}{{ user['DPMax'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">BMIMin:</label>
+                    <div class="col-md-4">
+                        <input id="BMIMin" name="BMIMin" type="text" placeholder="BMIMin" class="form-control input-md" value="{{
+          request.form.BMIMin }}{{ user['BMIMin'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">BMIMax:</label>
+                    <div class="col-md-4">
+                        <input id="BMIMax" name="BMIMax" type="text" placeholder="BMIMax" class="form-control input-md" value="{{
+          request.form.BMIMax }}{{ user['BMIMax'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">ActivityMin:</label>
+                    <div class="col-md-4">
+                        <input id="ActivityMin" name="ActivityMin" type="text" placeholder="ActivityMin" class="form-control input-md" value="{{
+          request.form.ActivityMin }}{{ user['ActivityMin'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">ActivityMax:</label>
+                    <div class="col-md-4">
+                        <input id="ActivityMax" name="ActivityMax" type="text" placeholder="ActivityMax" class="form-control input-md" value="{{
+          request.form.ActivityMax }}{{ user['ActivityMax'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">StressMin:</label>
+                    <div class="col-md-4">
+                        <input id="StressMin" name="StressMin" type="text" placeholder="StressMin" class="form-control input-md" value="{{
+          request.form.StressMin }}{{ user['StressMin'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">StressMax:</label>
+                    <div class="col-md-4">
+                        <input id="StressMax" name="StressMax" type="text" placeholder="StressMax" class="form-control input-md" value="{{
+          request.form.StressMax }}{{ user['StressMax'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">PSQIMin:</label>
+                    <div class="col-md-4">
+                        <input id="PSQIMin" name="PSQIMin" type="text" placeholder="PSQIMin" class="form-control input-md" value="{{
+          request.form.PSQIMin }}{{ user['PSQIMin'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">PSQIMax:</label>
+                    <div class="col-md-4">
+                        <input id="PSQIMax" name="PSQIMax" type="text" placeholder="PSQIMax" class="form-control input-md" value="{{
+          request.form.PSQIMax }}{{ user['PSQIMax'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">SleepEffMin:</label>
+                    <div class="col-md-4">
+                        <input id="SleepEffMin" name="SleepEffMin" type="text" placeholder="SleepEffMin" class="form-control input-md" value="{{
+          request.form.SleepEffMin }}{{ user['SleepEffMin'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">SleepEffMax:</label>
+                    <div class="col-md-4">
+                        <input id="SleepEffMax" name="SleepEffMax" type="text" placeholder="SleepEffMax" class="form-control input-md" value="{{
+          request.form.SleepEffMax }}{{ user['SleepEffMax'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">CaloriesMin:</label>
+                    <div class="col-md-4">
+                        <input id="CaloriesMin" name="CaloriesMin" type="text" placeholder="CaloriesMin" class="form-control input-md" value="{{
+          request.form.CaloriesMin }}{{ user['CaloriesMin'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                 <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">CaloriesMax:</label>
+                    <div class="col-md-4">
+                        <input id="CaloriesMax" name="CaloriesMax" type="text" placeholder="CaloriesMax" class="form-control input-md" value="{{
+          request.form.CaloriesMax }}{{ user['CaloriesMax'] }}">
+                        </br>
+                    </div>
+                </div>
+
+</br>
+                <div class="form-group">
+                    <div id="edit">
+                        <input id="selectuser" class="btn butt" type="submit" value="SET THRESHOLD">
+                    </div>
+                </div>
+                </br>
+            </div>
+            </br>
+        </fieldset>
+    </form>
+
+
+</center>
+
+<!--========================================================================================-->
+
+
+
+<script src="static/js/dashboard.js"></script>
+
+
+
+</html>

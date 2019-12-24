@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SleepIN - Contacts</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="static/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="static/css/contact.css">
+    <!--===============================================================================================-->
+</head>
+
+<body style="background-color: #d0d0d0">
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <a href="login"><img src="static/images/img.png" alt="IMG"></a>
+                </div>
+
+
+                <form class="login100-form validate-form" action="" method="post">
+                    <div class="login100-form-title">
+                        <a href="login"><img src="static/images/artboard.png" alt="IMG" width=100%></a>
+                    </div>
+
+                    <div id="stats-container">
+                        <thead id=tabletitle>
+                            <div id="tabletitle">
+                                <tr>
+                                    <div id="tb-col1">
+                                        <h3>Contacts:</h3>
+                                        </br>
+                                    </div>
+                                </tr>
+                            </div>
+                        </thead>
+                        <div id="userslogtech" style="width: 90%; height: 170px;">
+                            <table id="logtech" onclick="printLog(event)">
+                                <tbody>
+                                    <tr id="logrow">
+                                        <th id="tech">Admin:</td>
+                                        <th id="email">E-mail</td>
+                                    </tr>
+                                    {% for t in tech %}
+                                    <tr id="logrow1">
+                                        <td id="dtech">{{ t[7] }}</td>
+                                        <td id="demail">{{ t[1] }}@sleep.in</td>
+                                    </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="static/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static/vendor/bootstrap/js/popper.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static/vendor/tilt/tilt.jquery.min.js"></script>
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+
+    </script>
+    <!--===============================================================================================-->
+    <script src="static/js/main.js"></script>
+
+</body>
+
+</html>

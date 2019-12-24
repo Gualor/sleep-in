@@ -1,0 +1,89 @@
+#helpblock {
+  color: gray;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.table_container {
+  margin: 0 auto;
+  width: 1000px;
+  background-color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+html, body {
+  margin: auto;
+  height: 100%;
+}
+
+.form-inline .form-control {
+  display: inline-block;
+  width: 300px;
+  margin: 10px;
+  vertical-align: middle;
+}
+
+.center-div {
+  margin: 0 auto;
+  width: 100px;
+}
+
+.form-inline {
+  display: block;
+  height: 116%;
+}
+
+.form-inline label {
+  justify-content: left;
+  margin-bottom: 0;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  margin: 0 auto;
+  width: 50%;
+}
+
+#radios {
+  display: inline-block;
+  height: 50px;
+  margin: auto auto;
+    overflow-y: hidden;
+}
+
+#radios td {
+  padding: 10px 50px;
+}
+
+#edit {
+  display: block;
+  float: left;
+  margin: 0 auto;
+}
+
+#delete {
+  display: block;
+  float: right;
+  margin: 0 auto;
+}
+
+/*  DELETE BUTTON */
+.dbutt {
+  background-color: #c62828;
+  color: white;
+  width: 200;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.dbutt:hover {
+  background-color: #333333;
+}
+
+.form-dbutt {
+  margin: 0 auto;
+}

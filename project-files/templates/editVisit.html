@@ -1,0 +1,398 @@
+<html>
+
+<head>
+    <title> SleepIN - Edit Visit</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="static/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="static/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="static/css/editVisit.css">
+</head>
+
+
+<body style="background-color: #d0d0d0">
+
+    <!--SIDEBAR MENU==============================================================================-->
+    <div id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <div id="avatar-cont">
+                <img id="avatar" src="static/images/med_avatar.png" width="100">
+            </div>
+            <div id="name-cont">
+                <center>
+                    <h4> {{ first }} {{ sur }} </h4>
+                </center>
+            </div>
+            <div id="funct-container">
+                <li><a href="selectUserBook"> Book visit</a></li>
+                <li><a href="selectVisit"> Edit visit </a></li>
+                <li><a href="selectUserThresh"> Set thresholds </a></li>
+                <li><a href="selectPatAbno"> Check abnormalities </a></li>
+                <li><a href="selectUserParam"> Visualize statistics </a></li>
+                <li><a href="login"> Log out</a></li>
+            </div>
+        </ul>
+    </div>
+
+    <!--BANNER==============================================================================-->
+    <div id="banner">
+        <div id="image">
+            <center><a href="medician"><img src="static/images/artboard.png" width="300"></a></center>
+        </div>
+    </div>
+</body>
+<!--FORM==============================================================================-->
+<center>
+    <form id="formid" class="form-inline" action="" method="post" enctype=multipart/form-data style="background-color: #d0d0d0; height:auto">
+        <fieldset>
+            </br>
+
+            <div class="table_container">
+                </br>
+                <legend>
+                    <h3>Insert Parameters:</h3>
+                </legend>
+
+
+                <!--ID-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="visitid">Visit ID:</label>
+                    <div class="col-md-4">
+                        <input name="visitID" type="text" placeholder="Insert ID" class="form-control input-md" value="{{
+          request.form.visitID }}{{ visit[0] }}" readonly>
+                    </div>
+                </div>
+
+                <!--ID-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="visitid">Patient ID:</label>
+                    <div class="col-md-4">
+                        <input name="patientID" type="text" placeholder="Insert ID" class="form-control input-md" value="{{
+          request.form.patientID }}{{ visit[1] }}" readonly>
+                    </div>
+                </div>
+
+                <!--ID-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="visitid">Medician ID:</label>
+                    <div class="col-md-4">
+                        <input name="medicianID" type="text" placeholder="Insert ID" class="form-control input-md" value="{{
+          request.form.medicianID }}{{ visit[2] }}" readonly>
+                    </div>
+                </div>
+
+                <!--ID-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="visitid">Visit Date:</label>
+                    <div class="col-md-4">
+                        {% if visit[5] == 1 %}
+                        <input id="visitDate" name="visitDate" type="text" placeholder="Insert Visit Date" class="form-control input-md" value="{{
+          request.form.visitDate }}{{ visit[3] }}" required readonly>
+                        {% elif visit[5] == 0 %}
+                        <input id="visitDate" name="visitDate" type="text" placeholder="Insert Visit Date" class="form-control input-md" value="{{
+          request.form.visitDate }}{{ visit[3] }}" required readonly>
+                        {% endif %}
+                    </div>
+                </div>
+
+        <script>
+            var comp = {{ visit[5] }};
+            var psg = {{ visit[4] }};
+        </script>
+        
+        <!-- VISIT NOT COMPLETED -->
+
+                <!-- PSG-->
+                <div id="vis-notcomp">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="radios">Polysomnography: </label>
+                    <table id="radios" style="margin-left: 26px; margin-right: 0px;">
+                        <tr>
+                            <td>
+                                <label class="radio-inline" for="radiospsg">
+                                    <input type="radio" name="psg" id="psg-radio0" value="0">
+                                    <div style="margin-left: 10px"> No</div>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-inline" for="radiospsg">
+                                    <input type="radio" name="psg" id="psg-radio1" value="1">
+                                    <div style="margin-left: 10px"> Yes</div>
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- COMPLETED-->
+                <div class="form-group" id="completed">
+                    <label class="col-md-4 control-label" for="radios">Completed: </label>
+                    <table id="radios" style="margin-left: 26px; margin-right: 0px;">
+                        <tr>
+                            <td>
+                                <label class="radio-inline" for="radios-0">
+                                    <input type="radio" name="comp" id="comp-radio0" value="0">
+                                    <div style="margin-left: 10px"> No</div>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-inline" for="radios-1">
+                                    <input type="radio" name="comp" id="comp-radio1" value="1">
+                                    <div style="margin-left: 10px"> Yes</div>
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+
+        <!-- VISIT COMPLETED -->
+
+                <!-- PSG-->
+                <div id="vis-comp">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="radios">PSG: </label>
+                    <table id="radios" style="margin-left: 26px; margin-right: 0px;">
+
+                        {% if visit[4] == 0 %}
+                        <tr>
+                            <td style="padding-left: 0px">
+                                <img src="static/images/radiono.png" width="300">
+                            </td>
+                        </tr>
+
+                        {% elif visit[4] == 1 %}
+                        <tr>
+                            <td style="padding-left: 0px">
+                                <img src="static/images/radioyes.png" width="300">
+                            </td>
+                        </tr>
+                        {% endif %}
+                    </table>
+                </div>
+
+                <!-- COMPLETED-->
+                <div class="form-group">
+
+                    <label class="col-md-4 control-label" for="radios">Completed: </label>
+
+                    <table id="radios" style="margin-left: 26px; margin-right: 0px;">
+                        <tr>
+                            <td style="padding-left: 0px">
+                                <img src="static/images/radioyes.png" width="300">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+        
+                {% if visit[5] == 0 %}
+                <!--BP-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="bps"> Systolic Blood Pressure :</label>
+                    <div class="col-md-4">
+                        <input id="sbp" name="bps" type="text" placeholder="mmHg" class="form-control input-md" value="{{
+          request.form.bps }}" required>
+                    </div>
+                </div>
+
+                <!--BP-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="bpd"> DyastolicBlood Pressure :</label>
+                    <div class="col-md-4">
+                        <input id="dbp" name="bpd" type="text" placeholder="mmHg" class="form-control input-md" value="{{
+          request.form.bpd }}" required>
+                    </div>
+                </div>
+
+                <!-- HEIGHT-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="height">Height:</label>
+                    <div class="col-md-4">
+                        <input id="height" name="height" type="text" placeholder="cm" class="form-control input-md" value="{{
+          request.form.height }}" required>
+                    </div>
+                </div>
+
+                <!-- WEIGHT-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="weight">Weight:</label>
+                    <div class="col-md-4">
+                        <input id="weight" name="weight" type="text" placeholder="kg" class="form-control input-md" value="{{
+          request.form.weight }}" required>
+                    </div>
+                </div>
+
+                <!-- ANAMNESIS-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="anamnesis">Anamnesis:</label>
+                    <div class="col-md-4">
+                        <input id="anam" name="anam" type="text" placeholder="Insert anamnesis" class="form-control input-md" value="{{
+          request.form.anam }}{{ visit[6] }}">
+                    </div>
+                </div>
+
+                <!-- DIAGNOSIS-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="diagnosis">Diagnosis:</label>
+                    <div class="col-md-4">
+                        <input id="diag" name="dia" type="text" placeholder="Insert diagnosis" class="form-control input-md" value="{{
+          request.form.dia }}{{ visit[7] }}">
+                    </div>
+                </div>
+
+                <!-- PRESCRIPTION-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="prescription">Prescription:</label>
+                    <div class="col-md-4">
+                        <input id="pres" name="pres" type="text" placeholder="Insert prescription" class="form-control input-md" value="{{
+          request.form.pres }}{{ visit[9] }}">
+                    </div>
+                </div>
+
+                <!-- PSG-->
+                <div class=" form-group" id="psg-div1">
+                    <label class="col-md-4 control-label" for="diag">Diagnosis from PSG:</label>
+                    <div class="col-md-4">
+
+                        <textarea class="form-control text-area" id="psgdiagn" placeholder="Insert text here" name="psgdiagn" value="{{request.form.psgdiagn}}"></textarea>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- NOTES-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="notes">Notes:</label>
+                    <div class="col-md-4">
+                        <textarea class="form-control text-area" placeholder="{{ visit[8] }}" id="notes" name="notes" value="{{
+          request.form.notes }}"></textarea>
+                    </div>
+                </div>
+
+                {% if visit[5] == 0 %}
+                </br>
+                <!-- CLINICAL DEVICE FILES-->
+                <div class="form-group" style="text-align: left">
+                    <label class="col-md-4 control-label" for="hoursofactivity">Upload HR file from clinical device:</label>
+                    <div class="col-md-4">
+                        <input type="file" name="hr" class="inputfile" id="file1" data-multiple-caption="{count} files selected" multiple / required>
+                        <label id="file-btn1" for="file1">Choose a file</label>
+                    </div>
+                </div>
+                </br>
+                <!-- PSG-->
+
+                <div class="form-group" style="text-align: left" id="psg-div">
+                    <label class="col-md-4 control-label" for="hoursofactivity">Upload PSG results:</label>
+                    <div class="col-md-4">
+                        <input type="file" name="psgres" class="inputfile" id="file2" data-multiple-caption="{count} files selected" multiple / required>
+                        <label id="file-btn2" for="file2">Choose a file</label>
+                    </div>
+                </div>
+
+                </br>
+                {% endif %}
+
+                </br>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <input id="insert" type="submit" class="btn butt" name="nome" value="SAVE">
+                    </div>
+                    <div class="col-md-4">
+                        <input id="insert" type="submit" class="btn butt" name="nome" value="PSL">
+                    </div>
+                    <div class="col-md-4">
+                        <input id="insert" type="submit" class="btn butt" name="nome" value="BOOK">
+                    </div>
+
+                </div>
+                </br>
+
+            </div>
+        </fieldset>
+        </br>
+    </form>
+
+
+</center>
+
+<!--========================================================================================-->
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="static/js/dashboard.js"></script>
+<script src="static/js/editVisit.js"></script>
+
+<script>
+    var input = document.querySelectorAll('.inputfile');
+
+    var input1 = document.getElementById('file1');
+    var input2 = document.getElementById('file2');
+
+    Array.prototype.forEach.call(input, function(input1) {
+        var label = input1.nextElementSibling,
+            labelVal = label.innerHTML;
+        console.log(labelVal);
+
+        input1.addEventListener('change', function(e) {
+            var fileName1 = '';
+            if (this.files && this.files.length > 1)
+                fileName1 = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+            else
+                fileName1 = e.target.value.split("\\").pop();
+
+            console.log(fileName1);
+
+            if (fileName1)
+                label.innerHTML = fileName1;
+            else
+                label.innerHTML = labelVal;
+        });
+
+    });
+
+
+
+    Array.prototype.forEach.call(input, function(input2) {
+        var label = input2.nextElementSibling,
+            labelVal = label.innerHTML;
+        console.log(labelVal);
+
+        input2.addEventListener('change', function(e) {
+            var fileName2 = '';
+            if (this.files && this.files.length > 1)
+                fileName2 = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+            else
+                fileName2 = e.target.value.split("\\").pop();
+
+            console.log(fileName2);
+
+            if (fileName2)
+                label.innerHTML = fileName2;
+            else
+                label.innerHTML = labelVal;
+        });
+    });
+
+</script>
+
+</html>

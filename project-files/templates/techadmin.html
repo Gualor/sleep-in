@@ -1,0 +1,210 @@
+<html>
+
+<head>
+  <title> SleepIN - Dashboard </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="static/images/icons/sin.png" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/css/util.css">
+  <link rel="stylesheet" type="text/css" href="static/css/main.css">
+  <link rel="stylesheet" type="text/css" href="static/css/dashboard.css">
+  <link rel="stylesheet" type="text/css" href="static/css/techadmin.css">
+
+
+</head>
+
+<body style="background-color: #d0d0d0">
+  <!-- -->
+  <style>
+    .helpblock {
+      color: gray;
+    }
+
+    .butt {
+      background-color: #3ab5a4;
+      border-radius: 25px;
+      width: 50%;
+      color: white;
+    }
+
+    .butt:hover {
+      background: #333333;
+    }
+  </style>
+
+  <!--SIDEBAR MENU==============================================================================-->
+  <div id="sidebar">
+    <div class="toggle-btn" onclick="toggleSidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul>
+      <div id="avatar-cont">
+        <img id="avatar" src="static/images/tech_avatar.png" width="100">
+      </div>
+      <div id="name-cont">
+        <center>
+          <h4> {{ first }} {{ sur }} </h4>
+        </center>
+      </div>
+      <div id="funct-container">
+        <li><a href="addUser"> Add User</a></li>
+        <li><a href="selectUser"> Edit/Delete User</a></li>
+        <li><a href="login">Log out</a></li>
+      </div>
+    </ul>
+  </div>
+
+  <!--BANNER==============================================================================-->
+  <div id="banner">
+    <div id="image">
+      <center><a href="techadmin"><img src="static/images/artboard.png" width="300"></a></center>
+    </div>
+  </div>
+</body>
+<!--FORM==============================================================================-->
+<center>
+  <form class="form-horizontal" action="" method="post" style="background-color: #d0d0d0">
+    <fieldset>
+      </br>
+
+      <div class="table_container">
+        </br>
+        <h3>Tech Admin Dashboard</h3>
+
+        <div id="users-cont">
+          <div id="numusers">
+            <img src="static/images/tech_avatar.png" width="200">
+            </br>
+            </br>
+            <div id="name-container">
+              <h4>{{ first }} {{ sur }}</h4>
+            </div>
+          </div>
+          <div id="userstype">
+            <img src="static/images/users.png" width="30" style="float: left; margin-right: 20px; margin-left: 30px">
+            <div id="title-caption" align="left"> Number of users: <b>&nbsp; {{ users }}</b></div>
+
+            <img src="static/images/patient.png" width="17" style="float: left; margin-right: 10px; margin-left: 30px">
+            <div id="caption" align="left">Patients: <b>&nbsp;{{ pat }}</b></div>
+
+            <img src="static/images/medician.png" width="17" style="float: left; margin-right: 10px; margin-left: 30px">
+            <div id="caption" align="left">Specialised Practicitioners: <b>&nbsp;{{ med }}</b></div>
+
+            <img src="static/images/tech.png" width="17" style="float: left; margin-right: 10px; margin-left: 30px">
+            <div id="caption" align="left">Technical Administrators: <b>&nbsp;{{ tech }}</b></div>
+          </div>
+        </div>
+
+
+        <div id="stats-container">
+          <canvas id="myChart"></canvas>
+          <table id="log_dict" style="display: none">
+            {% for key, value in log_dict.items() %}
+            <tr>
+              <th> {{ key }} </th>
+              <td> {{ value }} </td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+
+        <div id="pippo-container">
+          <thead id=tabletitle>
+            <div id="tabletitle">
+              <tr>
+                <div id="tb-col1">
+                  ID
+                </div>
+                <div id="tb-col2">
+                  Date
+                </div>
+              </tr>
+            </div>
+          </thead>
+          <div id="userslog" class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table id="log" onclick="printLog(event)">
+              <tbody id="log-body">
+                {% for log in login %}
+                <tr id="logrow" style="margin-bottom: 2%;">
+                  <td id="logpeppo" style="width: 15px;">{{ log[0] }}</td>
+
+                  <td style="margin-left: 15px;">{{ log[1] }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+    </fieldset>
+  </form>
+</center>
+
+<!--========================================================================================-->
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="static/js/dashboard.js"></script>
+<script>
+  $('#log').click(function(e) {
+    $("#log tbody tr").each(function printLog() {
+      console.log(document.getElementById("logrow").getElementsByTagName("td")[1]);
+    })
+  });
+</script>
+
+<script>
+  var table = document.getElementById('log_dict');
+  var login_data = [];
+  var day_label = [];
+
+
+  for (var i = 0; i < table.rows.length; i++) {
+    var day = table.rows[i].cells[0].innerHTML
+    var num = table.rows[i].cells[1].innerHTML
+    day_label.push(day)
+    login_data.push(num)
+  };
+
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+      labels: day_label,
+      datasets: [{
+        label: 'Daily Logins',
+        backgroundColor: '#ffca4f',
+        borderColor: '#ffca4f',
+        data: login_data
+      }]
+    },
+
+    // Configuration options go here
+    options: {}
+  });
+
+  console.log(login_data);
+</script>
+
+
+</html>

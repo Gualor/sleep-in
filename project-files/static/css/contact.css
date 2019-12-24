@@ -1,0 +1,33 @@
+#tech {
+    width: 40%;
+    padding-bottom: 5%;
+}
+
+#email {
+    width: 40%;
+    padding-bottom: 5%;
+}
+
+#dtech {
+    width: 40%;
+    padding-bottom: 2%;
+}
+
+#demail {
+    width: 40%;
+    padding-bottom: 2%;
+}
+
+#sub {
+    width: 90%;
+    font-size: 1.15rem;
+}
+
+#userlog {
+    width: 90%;
+}
+
+#userslogtech {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

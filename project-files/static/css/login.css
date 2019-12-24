@@ -1,0 +1,32 @@
+#lfail {
+    position: absolute;
+    display: block;
+    z-index: 5;
+    width: 735px;
+    top: 25px;
+    text-align: center;
+    padding-bottom: 0;
+    font-size: 22px;
+    border-radius: 25px;
+    height: 50px;
+    padding-top: 10px; 
+}
+
+.limiter {
+    z-index: 1;
+}
+
+#tb-col1 {
+    color: #3ab5a4;
+}
+
+#logrow {
+    color: #3a6c87;
+    font-weight: bolder;
+}
+
+#stats-container {
+    width: 425px;
+    font-size: 16px;
+}
+

@@ -1,0 +1,67 @@
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.form-inline .form-control {
+  display: inline-block;
+  width: 300px;
+  margin: 10px;
+  vertical-align: middle;
+}
+
+.center-div {
+  margin: 0 auto;
+  width: 100px;
+}
+
+.form-inline {
+  display: block;
+  height: 100%;
+}
+
+.form-inline label {
+  justify-content: left;
+  margin-bottom: 0;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  margin: 0 auto;
+  width: 50%;
+}
+
+#radios {
+  display: inline-block;
+  height: 50px;
+  margin: auto auto;
+  overflow-y: hidden;
+}
+
+#radios td {
+  padding: 10px 50px;
+}
+
+.butt {
+  background-color: #3ab5a4;
+  color: white;
+  width: 200;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.form-butt {
+  margin: 0 auto;
+}
+
+.butt:hover {
+  background: #333333;
+}
+
+#adduser {
+  display: block;
+  margin: 0 auto;
+}

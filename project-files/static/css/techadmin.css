@@ -1,0 +1,149 @@
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.table_container {
+    margin: 0 auto;
+    width: 1000px;
+    height: 600px;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.form-horizontal {
+    height: 100%;
+    width: 100%;
+}
+
+#userslog {
+    height: 100%;
+}
+
+#users-cont {
+    display: block;
+    position: relative;
+    width: 50%;
+    height: 90%;
+    padding: 3%;
+    padding-left: 0%;
+    float: left;
+}
+
+#name-container {
+    height: 15%;
+    padding-bottom: 5%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+#stats-container {
+    display: block;
+    position: relative;
+    width: 50%;
+    height: 45%;
+    padding: 3%;
+    padding-left: 0%;
+    padding-right: 10%;
+    float: right;
+}
+
+#pippo-container {
+    display: block;
+    position: relative;
+    width: 50%;
+    height: 45%;
+    padding: 3%;
+    padding-left: 0%;
+    padding-right: 10%;
+    float: right;
+}
+
+#numusers {
+    width: 400px;
+}
+
+#userstype,
+img {
+    display: inline-block;
+}
+
+#userstype {
+    display: block;
+    margin: 0 auto;
+    margin-left: 15%;
+}
+
+#caption {
+    width: 300px;
+    margin-bottom: 5%;
+    font-size: 14px;
+}
+
+#myChart {
+    width: 100%;
+}
+
+#title-caption {
+    margin-bottom: 5%;
+    font-size: 18px;
+}
+
+#log {
+    background-color: #ffca4f36;
+    float: left;
+    height: 100%;
+    width: 100%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-collapse: collapse;
+}
+
+#logrow {
+    display: flex;
+}
+
+#logrow td {
+    width: 50%;
+}
+
+#tib {
+    margin: 0 auto;
+}
+
+#tabletitle {
+    padding-top: 1%;
+    height: 15%;
+    width: 100%;
+    background-color: #ffca4f;
+    color: white;
+    border-radius: 15px 15px 0px 0px;
+}
+
+#tb-col1 {
+    width: 40%;
+    float: left;
+}
+
+#tb-col2 {
+    width: 50%;
+    float: left;
+}
+
+#userslog {
+    height: 100%;
+    padding-bottom: 16%;
+}
+
+#log-body {
+    display: block;
+}
+
+#logpeppo {
+    width: auto;
+    float: left;
+    margin-left: 19%;
+    margin-right: 20%;
+}

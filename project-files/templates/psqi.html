@@ -1,0 +1,332 @@
+<html>
+
+<head>
+  <title> SleepIN - Dashboard </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="static/images/icons/sin.png" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/css/util.css">
+  <link rel="stylesheet" type="text/css" href="static/css/main.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/css/psqi.css">
+
+  <!--===============================================================================================-->
+</head>
+
+
+<body style="background-color: #d0d0d0">
+  <!-- <center><h1>SLEEPIN</h1></center>
+    <!--SIDEBAR-->
+  <div id="sidebar">
+    <div class="toggle-btn" onclick="toggleSidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul>
+      <div id="avatar-cont">
+        <img id="avatar" src="static/images/pat_avatar.png" width="100">
+      </div>
+      <div id="name-cont">
+        <center>
+          <h4> {{ first }} {{ sur }} </h4>
+        </center>
+      </div>
+      <div id="funct-container">
+        <li><a href="insertParamHome"> Insert Parameters</a></li>
+        <li><a href="visualizeStatistics"> Visualize Parameters</a></li>
+        <li><a href="psqi">PSQI Test</a></li>
+        <li><a href="sleepEff">Sleep Efficency</a></li>
+        <li><a href="login">Log out</a></li>
+      </div>
+    </ul>
+  </div>
+
+  <!--BANNER-->
+  <div id="banner">
+    <div id="image">
+      <center><a href="patient"><img src="static/images/artboard.png" width="300"></a></center>
+    </div>
+  </div>
+</body>
+
+<form action="" method="post" class="form-horizontal form-psqi">
+  <fieldset>
+    </br>
+
+    <div class="table_container">
+      </br>
+      <!-- Form Name -->
+      <div align="center">
+        <legend>
+          <h3>Pittsburgh Sleep Quality Index (PSQI)</h3>
+        </legend>
+      </div>
+      </br>
+      <!-- Select Basic -->
+      <div class="istructions">
+
+        <head class="col-md-4 control-label">Instructions: The following questions relate to your usual sleep habits during the <u>past month only</u>. Your answers
+          should indicate the most accurate reply for the <u>majority</u> of days and nights in the past month. <b>Please answer all questions.</b></head>
+      </div>
+      </br>
+      <div class="form-group">
+        <div class="labels">
+
+          <head class="col-md-4 control-label" for="selectbasic">1. During the past month, what time have you usually gone to bed at night?</head>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+          <div class="col-md-4">
+            <input id="textinput" name="quest1" type="text" placeholder="Hours" class="form-control input-md" value="{{request.form.quest1}}" required>
+          </div>
+        </div>
+      </div>
+      </br>
+      <div class="form-group">
+        <div class="labels">
+
+          <head class="col-md-4 control-label" for="selectbasic">2. During the past month, how long (in minutes) has it usually taken you to fall asleep each night?</head>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+          <div class="col-md-4">
+            <input id="textinput" name="quest2" type="text" placeholder="Minutes" class="form-control input-md" value="{{request.form.quest2}}" required>
+          </div>
+        </div>
+      </div>
+      </br>
+
+      <div class="form-group">
+        <div class="labels">
+
+          <head class="col-md-4 control-label" for="selectbasic">3. During the past month, what time have you usually gotten up in the morning?</head>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+          <div class="col-md-4">
+            <input id="textinput" name="quest3" type="text" placeholder="Hours" class="form-control input-md" value="{{request.form.quest3}}" required>
+          </div>
+        </div>
+      </div>
+      </br>
+
+      <div class="form-group">
+        <div class="labels">
+
+          <head class="col-md-4 control-label" for="selectbasic">4. During the past month, how many hours of actual sleep did you get at night? (This may be different than the
+            number of hours you spent in bed.)</label>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+          <div class="col-md-4">
+            <input id="textinput" name="quest4" type="text" placeholder="Hours" class="form-control input-md" value="{{request.form.quest4}}" required>
+          </div>
+        </div>
+      </div>
+      </br>
+
+      <table class="tg">
+        <tr>
+          <th class="tg-s268">
+            <div class="questions">5. During the past month, how often have you had trouble sleeping because you</div>
+          </th>
+          <th class="tg-0lax">
+            <div class="radioquest"> Not during the past month<br>(0)</div>
+          </th>
+          <th class="tg-0lax">
+            <div class="radioquest">Less than once a week<br><br>(1)</div>
+          </th>
+          <th class="tg-0lax">
+            <div class="radioquest">Once or twice a week<br><br>(2)</div>
+          </th>
+          <th class="tg-0lax">
+            <div class="radioquest">Three or more times a week<br>(3)</div>
+          </th>
+        </tr>
+        <tr>
+          <td class="tg-s268">
+            <div class="questions"> A. Cannot get to sleep within 30 minutes</div>
+          </td>
+          <td class="tg-buh4"><input type="radio" name="quest51" id="radios-0" value="0" checked></td>
+          <td class="tg-buh4"><input type="radio" name="quest51" id="radios-1" value="1"></td>
+          <td class="tg-buh4"><input type="radio" name="quest51" id="radios-2" value="2"></td>
+          <td class="tg-buh4"><input type="radio" name="quest51" id="radios-3" value="3"></td>
+        </tr>
+        <tr>
+          <td class="tg-s268">
+            <div class="questions"> B. Wake up in the middle of the night or early morning </div>
+          </td>
+          <td class="tg-buh4"><input type="radio" name="quest52" id="radios-0" value="0" checked></td>
+          <td class="tg-buh4"><input type="radio" name="quest52" id="radios-1" value="1"></td>
+          <td class="tg-buh4"><input type="radio" name="quest52" id="radios-2" value="2"></td>
+          <td class="tg-buh4"><input type="radio" name="quest52" id="radios-3" value="3"></td>
+        </tr>
+        <tr>
+          <td class="tg-s268">
+            <div class="questions"> C. Have to get up to use the bathroom</div>
+          </td>
+          <td class="tg-buh4"><input type="radio" name="quest53" id="radios-0" value="0" checked></td>
+          <td class="tg-buh4"><input type="radio" name="quest53" id="radios-1" value="1"></td>
+          <td class="tg-buh4"><input type="radio" name="quest53" id="radios-2" value="2"></td>
+          <td class="tg-buh4"><input type="radio" name="quest53" id="radios-3" value="3"></td>
+        </tr>
+        <tr>
+          <td class="tg-s268">
+            <div class="questions"> D. Cannot breathe comfortably</div>
+          </td>
+          <td class="tg-buh4"><input type="radio" name="quest54" id="radios-0" value="0" checked></td>
+          <td class="tg-buh4"><input type="radio" name="quest54" id="radios-1" value="1"></td>
+          <td class="tg-buh4"><input type="radio" name="quest54" id="radios-2" value="2"></td>
+          <td class="tg-buh4"><input type="radio" name="quest54" id="radios-3" value="3"></td>
+        </tr>
+        <tr>
+          <td class="tg-s268">
+            <div class="questions"> E. Cough or snore loudly</div>
+          </td>
+          <td class="tg-buh4"><input type="radio" name="quest55" id="radios-0" value="0" checked></td>
+          <td class="tg-buh4"><input type="radio" name="quest55" id="radios-1" value="1"></td>
+          <td class="tg-buh4"><input type="radio" name="quest55" id="radios-2" value="2"></td>
+          <td class="tg-buh4"><input type="radio" name="quest55" id="radios-3" value="3"></td>
+        </tr>
+        <tr>
+          <td class="tg-s268">
+            <div class="questions"> F. Feel too cold</div>
+          </td>
+          <td class="tg-buh4"><input type="radio" name="quest56" id="radios-0" value="0" checked></td>
+          <td class="tg-buh4"><input type="radio" name="quest56" id="radios-1" value="1"></td>
+          <td class="tg-buh4"><input type="radio" name="quest56" id="radios-2" value="2"></td>
+          <td class="tg-buh4"><input type="radio" name="quest56" id="radios-3" value="3"></td>
+        </tr>
+        <tr>
+          <td class="tg-s268">
+            <div class="questions"> G. Feel too hot</div>
+          </td>
+          <td class="tg-buh4"><input type="radio" name="quest57" id="radios-0" value="0" checked></td>
+          <td class="tg-buh4"><input type="radio" name="quest57" id="radios-1" value="1"></td>
+          <td class="tg-buh4"><input type="radio" name="quest57" id="radios-2" value="2"></td>
+          <td class="tg-buh4"><input type="radio" name="quest57" id="radios-3" value="3"></td>
+        </tr>
+        <tr>
+          <td class="tg-s268">
+            <div class="questions"> H. Have bad dreams</div>
+          </td>
+          <td class="tg-buh4"><input type="radio" name="quest58" id="radios-0" value="0" checked></td>
+          <td class="tg-buh4"><input type="radio" name="quest58" id="radios-1" value="1"></td>
+          <td class="tg-buh4"><input type="radio" name="quest58" id="radios-2" value="2"></td>
+          <td class="tg-buh4"><input type="radio" name="quest58" id="radios-3" value="3"></td>
+        </tr>
+        <tr>
+          <td class="tg-s268">
+            <div class="questions"> I. Have pain</div>
+          </td>
+          <td class="tg-buh4"><input type="radio" name="quest59" id="radios-0" value="0" checked></td>
+          <td class="tg-buh4"><input type="radio" name="quest59" id="radios-1" value="1"></td>
+          <td class="tg-buh4"><input type="radio" name="quest59" id="radios-2" value="2"></td>
+          <td class="tg-buh4"><input type="radio" name="quest59" id="radios-3" value="3"></td>
+        </tr>
+        <tr>
+          <td class="tg-s268">
+            <div class="questions"> J. Other reason (s), please describe, including how often you have had trouble sleeping because of this reason (s):
+            </div>
+            <textarea class="form-control text-area" id="textarea" placeholder="Insert text here" name="textarea" value="{{request.form.quest4}}"></textarea>
+          </td>
+          <td class="tg-buh4"><input type="radio" name="quest510" id="radios-0" value="0" checked></td>
+          <td class="tg-buh4"><input type="radio" name="quest510" id="radios-1" value="1"></td>
+          <td class="tg-buh4"><input type="radio" name="quest510" id="radios-2" value="2"></td>
+          <td class="tg-buh4"><input type="radio" name="quest510" id="radios-3" value="3"></td>
+        </tr>
+        <tr>
+          <td class="tg-s268">
+            <div class="questions">6. During the past month, how often have you taken medicine (prescribed or “over the counter”) to help you sleep?</div>
+          </td>
+          <td class="tg-buh4"><input type="radio" name="quest6" id="radios-0" value="0" checked></td>
+          <td class="tg-buh4"><input type="radio" name="quest6" id="radios-1" value="1"></td>
+          <td class="tg-buh4"><input type="radio" name="quest6" id="radios-2" value="2"></td>
+          <td class="tg-buh4"><input type="radio" name="quest6" id="radios-3" value="3"></td>
+        </tr>
+        <tr>
+          <td class="tg-s268">
+            <div class="questions">7. During the past month, how often have you had trouble staying awake while driving, eating meals, or engaging in<br>social activity?</div>
+          </td>
+          <td class="tg-buh4"><input type="radio" name="quest7" id="radios-0" value="0" checked></td>
+          <td class="tg-buh4"><input type="radio" name="quest7" id="radios-1" value="1"></td>
+          <td class="tg-buh4"><input type="radio" name="quest7" id="radios-2" value="2"></td>
+          <td class="tg-buh4"><input type="radio" name="quest7" id="radios-3" value="3"></td>
+        </tr>
+        <tr>
+          <th class="tg-s268"></th>
+          <th class="tg-s268">
+            <div class="radioquest">No problem at all<br>(0)</div>
+          </th>
+          <th class="tg-s268">
+            <div class="radioquest">Only a very slight problem<br>(1)</div>
+          </th>
+          <th class="tg-s268">
+            <div class="radioquest">Somewhat of a problem<br>(2)</div>
+          </th>
+          <th class="tg-s268">
+            <div class="radioquest">A very big problem<br>(3)</div>
+          </th>
+        </tr>
+        <tr>
+          <td class="tg-s268">
+            <div class="questions">8. During the past month, how much of a problem has it been for you to keep up enthusiasm to get things done?</div>
+          </td>
+          <td class="tg-buh4"><input type="radio" name="quest8" id="radios-0" value="0" checked></td>
+          <td class="tg-buh4"><input type="radio" name="quest8" id="radios-1" value="1"></td>
+          <td class="tg-buh4"><input type="radio" name="quest8" id="radios-2" value="2"></td>
+          <td class="tg-buh4"><input type="radio" name="quest8" id="radios-3" value="3"></td>
+        </tr>
+        <tr>
+          <th class="tg-s268"></th>
+          <th class="tg-s268">
+            <div class="radioquest">Very good<br>(0)</div>
+          </th>
+          <th class="tg-s268">
+            <div class="radioquest">Fairly good<br>(1)</div>
+          </th>
+          <th class="tg-s268">
+            <div class="radioquest">Fairly bad<br>(2)</div>
+          </th>
+          <th class="tg-s268">
+            <div class="radioquest">Very bad<br>(3)</div>
+          </th>
+        </tr>
+        <tr>
+          <td class="tg-s268">
+            <div class="questions">9. During the past month, how would you rate your sleep quality overall?</div>
+          </td>
+          <td class="tg-buh4"><input type="radio" name="quest9" id="radios-0" value="0" checked></td>
+          <td class="tg-buh4"><input type="radio" name="quest9" id="radios-1" value="1"></td>
+          <td class="tg-buh4"><input type="radio" name="quest9" id="radios-2" value="2"></td>
+          <td class="tg-buh4"><input type="radio" name="quest9" id="radios-3" value="3"></td>
+        </tr>
+      </table>
+      </br>
+      <!-- Button -->
+      <tr>
+        <div class="form-butt">
+          <center><input id="singlebutton" name="singlebutton" type="submit" class="btn butt" value="SUBMIT"></center>
+        </div>
+        </br>
+  </fieldset>
+  </tr>
+  </br>
+  </br>
+</form>
+<script src="static/js/dashboard.js"></script>
+
+</html>

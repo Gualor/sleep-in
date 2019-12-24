@@ -1,0 +1,171 @@
+<html>
+
+<head>
+    <title> SleepIN - Sleep Eff </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="static/images/icons/sin.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="static/css/sleepEff.css">
+    <!--===============================================================================================-->
+</head>
+
+<body style="background-color: #d0d0d0">
+    <!-- <center><h1>SLEEPIN</h1></center>-->
+    <!--SIDEBAR-->
+    <div id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <div id="avatar-cont">
+                <img id="avatar" src="static/images/pat_avatar.png" width="100">
+            </div>
+            <div id="name-cont">
+                <center>
+                    <h4> {{ first }} {{ sur }} </h4>
+                </center>
+            </div>
+            <div id="funct-container">
+                <li><a href="insertParamHome"> Insert Parameters</a></li>
+                <li><a href="visualizeStatistics"> Visualize Parameters</a></li>
+                <li><a href="psqi">PSQI Test</a></li>
+                <li><a href="sleepEff">Sleep Efficency</a></li>
+                <li><a href="login">Log out</a></li>
+            </div>
+        </ul>
+    </div>
+    <!--BANNER-->
+    <div id="banner">
+        <div id="image">
+            <center><a href="patient"><img src="static/images/artboard.png" width="300"></a></center>
+        </div>
+    </div>
+</body>
+<form action="" method="post" class="form-inline">
+    <fieldset>
+        </br>
+        <div class="table_container" align="center">
+            </br>
+            <!-- SLEEP EFFICENCY -->
+            <div align="center">
+                <legend>
+                    <h3>Sleep efficiency calculation:</h3>
+                </legend>
+            </div>
+            </br>
+            <div class="istructions">
+
+                <head class="col-md-4 control-label">The following questions relate to your usual sleep habits.</head>
+            </div>
+            </br>
+            <!-- 1. -->
+            <div class="form-group">
+                <div class="labels">
+
+                    <head class="col-md-4 control-label" for="selectbasic">1. I went to bed at:</head>
+                </div>
+                <input id="textinput" name="quest1" type="text" placeholder="Hours" class="form-control input-md" value="{{request.form.quest1}}" required>
+            </div>
+            </br>
+            <!-- 2. -->
+            <div class="form-group">
+                <div class="labels">
+
+                    <head class="col-md-4 control-label" for="selectbasic">2. I turned out the lights after:</head>
+                </div>
+                <input id="textinput" name="quest2" type="text" placeholder="Minutes" class="form-control input-md" value="{{request.form.quest2}}" required>
+            </div>
+            </br>
+            <!-- 3. -->
+            <div class="form-group">
+                <div class="labels">
+
+                    <head class="col-md-4 control-label" for="selectbasic">3. I fall asleep in:</head>
+                </div>
+                <input id="textinput" name="quest3" type="text" placeholder="Minutes" class="form-control input-md" value="{{request.form.quest3}}" required>
+            </div>
+            </br>
+            <!-- 4. -->
+            <div class="form-group">
+                <div class="labels">
+
+                    <head class="col-md-4 control-label" for="selectbasic">4. I woke up ___ times during the night. </label>
+                </div>
+                <input id="textinput" name="quest4" type="text" placeholder="#Times" class="form-control input-md" value="{{request.form.quest4}}" required>
+            </div>
+            </br>
+            <!--5-->
+            <div class="form-group">
+                <div class="labels">
+
+                    <head class="col-md-4 control-label" for="selectbasic">5. The total duration of these awakenings was:</head>
+                </div>
+                <input id="textinput" name="quest5" type="text" placeholder="Minutes" class="form-control input-md" value="{{request.form.quest5}}" required>
+            </div>
+            </br>
+            <!--6-->
+            <div class="form-group">
+                <div class="labels">
+
+                    <head class="col-md-4 control-label" for="selectbasic">6. After awakening for the last time i was in bed for: </head>
+                </div>
+                <input id="textinput" name="quest6" type="text" placeholder="Minutes" class="form-control input-md" value="{{request.form.quest6}}" required>
+            </div>
+            </br>
+            <!--7-->
+            <div class="form-group">
+                <div class="labels">
+
+                    <head class="col-md-4 control-label" for="selectbasic">7. I got up at: </label>
+                </div>
+                <input id="textinput" name="quest7" type="text" placeholder="Hours" class="form-control input-md" value="{{request.form.quest7}}" required>
+            </div>
+            </br>
+            <!--8-->
+            <div class="form-group">
+                <div class="labels">
+                    <head class="col-md-4 control-label" for="selectbasic">8. Rate the quality of your sleep. </label>
+                </div>
+                <table class="tg">
+                    <td class="tg-buh4"><input type="radio" name="subj" id="radios-1" value="1" checked> 1</td>
+                    <td class="tg-buh4"><input type="radio" name="subj" id="radios-2" value="2"> 2</td>
+                    <td class="tg-buh4"><input type="radio" name="subj" id="radios-3" value="3"> 3</td>
+                    <td class="tg-buh4"><input type="radio" name="subj" id="radios-4" value="4"> 4</td>
+                    <td class="tg-buh4"><input type="radio" name="subj" id="radios-5" value="5"> 5</td>
+                </table>
+            </div>
+
+            </br>
+            <!-- BUTTON -->
+
+            <div class="form-butt">
+                <center><input id="singlebutton" name="singlebutton" type="submit" class="btn butt" value="SUBMIT"></center>
+            </div>
+            </br>
+        </div>
+        </br>
+    </fieldset>
+
+    </br>
+</form>
+<script src="static/js/dashboard.js"></script>
+
+</html>

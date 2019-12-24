@@ -1,0 +1,179 @@
+<html>
+
+<head>
+  <title> SleepIN - Patient </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="static/images/icons/sin.png" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/css/util.css">
+  <link rel="stylesheet" type="text/css" href="static/css/main.css">
+  <link rel="stylesheet" type="text/css" href="static/css/patient.css">
+  <link rel="stylesheet" type="text/css" href="static/css/dashboard.css">
+</head>
+
+<body style="background-color: #d0d0d0">
+  <!-- -->
+  <style>
+    .helpblock {
+      color: gray;
+    }
+
+    .butt {
+      background-color: #3ab5a4;
+      border-radius: 25px;
+      width: 50%;
+      color: white;
+    }
+
+    .butt:hover {
+      background: #333333;
+    }
+
+    .table_container {
+      margin: 0 auto;
+      width: 1000px;
+      background-color: white;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
+  </style>
+
+  <!--SIDEBAR MENU==============================================================================-->
+  <div id="sidebar">
+    <div class="toggle-btn" onclick="toggleSidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul>
+      <div id="avatar-cont">
+        <img id="avatar" src="static/images/pat_avatar.png" width="100">
+      </div>
+      <div id="name-cont">
+        <center>
+          <h4> {{ first }} {{ sur }} </h4>
+        </center>
+      </div>
+      <div id="funct-container">
+        <li><a href="insertParamHome"> Insert Parameters</a></li>
+        <li><a href="visualizeStatistics"> Visualize Parameters</a></li>
+        <li><a href="psqi">PSQI Test</a></li>
+        <li><a href="sleepEff">Sleep Efficency</a></li>
+        <li><a href="login">Log out</a></li>
+      </div>
+    </ul>
+  </div>
+
+  <!--BANNER==============================================================================-->
+  <div id="banner">
+    <div id="image">
+      <center><a href="patient"><img src="static/images/artboard.png" width="300"></a></center>
+    </div>
+  </div>
+</body>
+<!--FORM==============================================================================-->
+<center>
+  <form class="form-horizontal" action="" method="post" style="background-color: #d0d0d0">
+    <fieldset>
+      </br>
+
+      <div class="table_container">
+        </br>
+        <h3>Patient Dashboard</h3>
+
+        <div id="users-cont">
+          <div id="numusers">
+            <img src="static/images/pat_avatar.png" width="200">
+            </br>
+            </br>
+            <div id="name-container">
+              <h4> {{ first }} {{ sur }} </h4>
+            </div>
+          </div>
+          <div id="userstype">
+            <img src="static/images/data.png" width="30" style="float: left; margin-right: 20px; margin-left: 30px">
+            <div id="title-caption" align="left"> CF: <b>&nbsp; {{ fcode }}</b></div>
+
+            <img src="static/images/calendar.png" width="17" style="float: left; margin-right: 10px; margin-left: 30px">
+            <div id="caption" align="left">Date of Birth: <b>&nbsp;{{ dob }}</b></div>
+
+            <img src="static/images/weight.png" width="17" style="float: left; margin-right: 10px; margin-left: 30px">
+            <div id="caption" align="left">Weight: <b>&nbsp;{{ weight }}</b></div>
+
+            <img src="static/images/height.png" width="17" style="float: left; margin-right: 10px; margin-left: 30px">
+            <div id="caption" align="left">Height: <b>&nbsp;{{ height }}</b></div>
+          </div>
+        </div>
+
+
+        <div id="stats-container">
+          <canvas id="patientChart"> </canvas>
+          <table id="eff_dict" style="display: none">
+            {% for key, value in eff_dict.items() %}
+            <tr>
+              <th> {{ key }} </th>
+              <td> {{ value }} </td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+
+        <div id="pippo-container">
+          <thead id=tabletitle>
+            <div id="tabletitle">
+              <tr>
+                <div id="tb-col1">
+                  Booked visits
+                </div>
+              </tr>
+            </div>
+          </thead>
+          <div id="userslog" class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table id="log" onclick="printLog(event)">
+              <tbody>
+                <tr id="logrow">
+
+                  <th id="med">Medician</td>
+                  <th id="date">Date</td>
+                  <th id="psg">Monitor</td>
+
+                </tr>
+
+                {% for vis in visit %}
+                <tr id="logrow">
+                  <td id="dmed">{{ vis[0] }} </td>
+                  <td id="ddate">{{ vis[1] }} &nbsp {{ vis[2] }}
+                  </td>
+                  <td id="dpsg">{{ vis[3] }}</td>
+                </tr>
+                {% endfor %}
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+    </fieldset>
+  </form>
+</center>
+
+<!--========================================================================================-->
+
+
+
+<script src="static/js/dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="static/js/patientDash.js"></script>
+
+</html>

@@ -1,0 +1,27 @@
+#graph-container {
+    width: 400px;
+    height: 400px;
+    display: block;
+    background-color: white;
+    
+}
+
+
+.table_container {
+    margin: 0 auto;
+    width: 1000px;
+    height: auto;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.form-inline {
+    height: 100%;
+    display: block;
+}
+
+#rect{
+    margin: 0 auto;
+    width: 50%;
+    display: block;
+    background-color: antiquewhite;
+}

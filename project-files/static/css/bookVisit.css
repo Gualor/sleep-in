@@ -1,0 +1,42 @@
+.form-group {
+    margin-bottom: 1rem;
+    margin: 20px;
+    width: 60%;
+}
+
+#datetimepicker {
+    height: auto;
+    width: 500px;
+    justify-content: center;
+}
+
+.datepicker table {
+    height: 100%;
+    width: auto;
+    overflow-y: hidden;
+}
+
+.timepicker table {
+    height: 100%;
+    width: 200px;
+    overflow-y: hidden;
+    margin-top: 20px;
+}
+
+.timepicker col-md-6 {
+    padding-right: 0;
+    margin-left: 100px;
+    margin: 20px;
+    
+}
+
+#helpblock {
+    color: gray;
+}
+
+.table_container {
+    margin: 0 auto;
+    width: 1000px;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}

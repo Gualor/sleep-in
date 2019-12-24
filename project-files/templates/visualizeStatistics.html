@@ -1,0 +1,270 @@
+<html>
+
+<head>
+    <title> SleepIN - Statistics </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="static/images/icons/sin.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="static/css/visualizeStatistics.css">
+    <!--===============================================================================================-->
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+</head>
+
+
+<body style="background-color: #d0d0d0">
+    <!-- <center><h1>SLEEPIN</h1></center>-->
+    <!--SIDEBAR-->
+    <div id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <div id="avatar-cont">
+                <img id="avatar" src="static/images/pat_avatar.png" width="100">
+            </div>
+            <div id="name-cont">
+                <center>
+                    <h4> {{ first }} {{ sur }} </h4>
+                </center>
+            </div>
+            <div id="funct-container">
+                <li><a href="insertParamHome"> Insert Parameters</a></li>
+                <li><a href="visualizeStatistics"> Visualize Parameters</a></li>
+                <li><a href="psqi">PSQI Test</a></li>
+                <li><a href="sleepEff">Sleep Efficency</a></li>
+                <li><a href="login">Log out</a></li>
+            </div>
+        </ul>
+    </div>
+
+    <!--BANNER-->
+    <div id="banner">
+        <div id="image">
+            <center><a href="patient"><img src="static/images/artboard.png" width="300"></a></center>
+        </div>
+    </div>
+</body>
+
+<form action="" method="post" class="form-inline" onsubmit="showGraph">
+    <fieldset>
+        </br>
+
+        <div class="table_container" align="center">
+            </br>
+            <h3>Visualize Statistics</h3>
+            </br>
+            <div id="calendar">
+                <div>
+                    <div>
+                        <div>
+                            <div id="datetimepicker12">
+                                <center>FROM:</center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <div>
+                            <div id="datetimepicker13"><b> TO:</b> </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    $(function() {
+                        $('#datetimepicker12').datetimepicker({
+                            inline: true,
+                            format: 'LD',
+                            forceParse: false,
+                        });
+                    });
+                    $(function() {
+                        $('#datetimepicker13').datetimepicker({
+                            inline: true,
+                            format: 'LD',
+                            forceParse: false,
+                        });
+                    });
+
+                </script>
+
+            </div>
+            </br>
+            <div id="graph-container">
+
+                <div id="graphpicker" class="form-group">
+                    <label class="col-md-4 control-label" for="graphtype">Graph type: </label>
+                    <div class="col-md-4">
+                        <select id="graphtype" class="form-control" style="height: auto;">
+                            <option value="H">Heart Rate</option>
+                            <option value="W">Body Mass Index</option>
+                            <option value="F">Food Calories</option>
+                            <option value="O">Hours of Physical Activity</option>
+                            <option value="P">Pittsburgh Sleep Quality Index</otion>
+                            <option value="S">Subjective Sleep Quality</option>
+                            <option value="E">Sleep Efficiency</option>
+                            <option value="SL">Perceived Stress Level</option>
+                        <option value="DB">Blood Pressure</option>
+                        </select>
+                    </div>
+                </div>
+                </br>
+                <canvas id="parametersChart"></canvas>
+
+                <!-- HR -->
+                <table id="hr" style="display: none">
+                    {% for key, value in hr.items() %}
+                    <tr>
+                        <th> {{ key }} </th>
+                        <td> {{ value }} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+
+                <!-- SBP -->
+                <table id="sbp" style="display: none">
+                    {% for key, value in sbp.items() %}
+                    <tr>
+                        <th> {{ key }} </th>
+                        <td> {{ value }} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+                <!-- DBP -->
+                <table id="dbp" style="display: none">
+                    {% for key, value in dbp.items() %}
+                    <tr>
+                        <th> {{ key }} </th>
+                        <td> {{ value }} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+                <!-- BMI -->
+                <table id="bmi" style="display: none">
+                    {% for key, value in bmi.items() %}
+                    <tr>
+                        <th> {{ key }} </th>
+                        <td> {{ value }} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+
+                <!-- CALORIES -->
+                <table id="cal" style="display: none">
+                    {% for key, value in cal.items() %}
+                    <tr>
+                        <th> {{ key }} </th>
+                        <td> {{ value }} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+                <!-- ACTIVITIES -->
+                <table id="act" style="display: none">
+                    {% for key, value in act.items() %}
+                    <tr>
+                        <th> {{ key }} </th>
+                        <td> {{ value }} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+
+                <!-- PSQI -->
+                <table id="psq" style="display: none">
+                    {% for key, value in psq.items() %}
+                    <tr>
+                        <th> {{ key }} </th>
+                        <td> {{ value }} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+                <!-- SLEEP QUALITY -->
+                <table id="qua" style="display: none">
+                    {% for key, value in qua.items() %}
+                    <tr>
+                        <th> {{ key }} </th>
+                        <td> {{ value }} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+                <!-- SLEEP EFFICIENCY -->
+                <table id="eff" style="display: none">
+                    {% for key, value in eff.items() %}
+                    <tr>
+                        <th> {{ key }} </th>
+                        <td> {{ value }} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+                <!-- PSL -->
+                <table id="psl" style="display: none">
+                    {% for key, value in psl.items() %}
+                    <tr>
+                        <th> {{ key }} </th>
+                        <td> {{ value }} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+                <!-- THRESHOLDS -->
+                <table id="thresh" style="display: none">
+                    {% for key, value in thresh.items() %}
+                    <tr>
+                        <th> {{ key }} </th>
+                        <td> {{ value }} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+            <!-- BUTTON -->
+            <tr>
+                <div class="form-butt">
+                    <center><input id="update" name="dates" type="submit" class="btn butt" value="UPDATE"></button></center>
+                </div>
+    </fieldset>
+    </br>
+    </br>
+
+    </tr>
+</form>
+
+
+<script src="static/js/dashboard.js"></script>
+<script src="static/js/visualizeStatistics.js"></script>
+
+</html>

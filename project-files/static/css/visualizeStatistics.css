@@ -1,0 +1,67 @@
+body {
+    background-color: #d0d0d0;
+}
+
+#graph-container {
+    width: 600px;
+    background-color: white;
+}
+
+
+.table_container {
+    margin: 0 auto;
+    width: 1000px;
+    height: auto;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.form-inline {
+    display: block;
+}
+
+#graphpicker {
+    margin-top: 5%;
+}
+
+#rect {
+    margin: 0 auto;
+    width: 50%;
+    display: block;
+    background-color: antiquewhite;
+}
+
+#calendar {
+    display: block;
+    margin: 0 auto;
+    height: 250px;
+}
+
+#datetimepicker12 {
+    height: 100%;
+    width: auto;
+    margin-left: 21%;
+    display: inline-block;
+    float: left;
+}
+
+.datepicker table {
+    height: 100%;
+    width: auto;
+}
+
+#datetimepicker13 {
+    height: auto;
+    width: auto;
+    margin-right: 21%;
+    display: inline-block;
+    float: right
+}
+
+.table {
+    overflow-y: hidden;
+}
+
+.form-butt {
+    padding-bottom: 3%;
+}

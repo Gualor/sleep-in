@@ -1,0 +1,177 @@
+<html>
+
+<head>
+    <title> SleepIN - Abnormalities </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="static/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="static/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="static/css/editUser.css">
+
+</head>
+
+<body style="background-color: #d0d0d0; overflow-y: hidden">
+
+    <!-- -->
+    <style>
+        #helpblock {
+            color: gray;
+        }
+
+        .table_container {
+            margin: 0 auto;
+            width: 1000px;
+            background-color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        }
+
+    </style>
+
+    <!--SIDEBAR MENU==============================================================================-->
+    <div id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <div id="avatar-cont">
+                <img id="avatar" src="static/images/med_avatar.png" width="100">
+            </div>
+            <div id="name-cont">
+                <center>
+                    <h4> {{ first }} {{ sur }} </h4>
+                </center>
+            </div>
+            <div id="funct-container">
+                <li><a href="selectUserBook"> Book visit</a></li>
+                <li><a href="selectVisit"> Edit visit </a></li>
+                <li><a href="selectUserThresh"> Set thresholds </a></li>
+                <li><a href="selectPatAbno"> Check abnormalities </a></li>
+                <li><a href="selectUserParam"> Visualize statistics </a></li>
+                <li><a href="login"> Log out</a></li>
+            </div>
+        </ul>
+    </div>
+
+    <!--BANNER==============================================================================-->
+    <div id="banner">
+        <div id="image">
+            <center><a href="medician"><img src="static/images/artboard.png" width="300"></a></center>
+        </div>
+    </div>
+</body>
+<!--FORM==============================================================================-->
+<center>
+    <form class="form-inline" action="" method="post" style="background-color: #d0d0d0" onsubmit="return confirm('Do you really want to submit the form?');">
+        <fieldset>
+            </br>
+
+            <div class="table_container">
+                </br>
+                <!-- Form Name -->
+                <legend>
+                    <h3>Abnormalities</h3>
+                </legend>
+
+
+                <!-- ID-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">Hours of physical activity:</label>
+                    <div class="col-md-4">
+                        <input id="act" name="act" type="text" placeholder="act" class="form-control input-md" value="{{ act }}" readonly>
+                        </br>
+                    </div>
+                </div>
+
+                <!-- ID-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">Blood Pressure:</label>
+                    <div class="col-md-4">
+                        <input id="bp" name="bp" type="text" placeholder="bp" class="form-control input-md" value="{{ bp }}" readonly>
+                        </br>
+                    </div>
+                </div>
+
+                <!-- ID-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">Body Measure:</label>
+                    <div class="col-md-4">
+                        <input id="bm" name="bm" type="text" placeholder="bm" class="form-control input-md" value="{{ bm }}" readonly>
+                        </br>
+                    </div>
+                </div>
+
+                <!-- ID-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">Calories:</label>
+                    <div class="col-md-4">
+                        <input id="cal" name="cal" type="text" placeholder="cal" class="form-control input-md" value="{{ cal }}" readonly>
+                        </br>
+                    </div>
+                </div>
+
+                <!-- ID-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">Perceived Stress:</label>
+                    <div class="col-md-4">
+                        <input id="stress" name="stress" type="text" placeholder="stress" class="form-control input-md" value="{{ stress }}" readonly>
+                        </br>
+                    </div>
+                </div>
+
+                <!-- ID-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">Sleep Quality:</label>
+                    <div class="col-md-4">
+                        <input id="sq" name="sq" type="text" placeholder="sq" class="form-control input-md" value="{{ sq }}" readonly>
+                        </br>
+                    </div>
+                </div>
+
+                <!-- ID-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">Sleep Efficiency:</label>
+                    <div class="col-md-4">
+                        <input id="se" name="se" type="text" placeholder="se" class="form-control input-md" value="{{ se }}" readonly>
+                        </br>
+                    </div>
+                </div>
+                
+                
+
+
+
+                </br>
+                
+            </div>
+            </br>
+        </fieldset>
+    </form>
+
+
+</center>
+
+<!--========================================================================================-->
+
+
+
+<script src="static/js/dashboard.js"></script>
+
+
+
+</html>

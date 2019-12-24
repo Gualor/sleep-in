@@ -1,0 +1,116 @@
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.form-inline .form-control {
+    display: inline-block;
+    width: 300px;
+    margin: 10px;
+    vertical-align: middle;
+}
+
+.center-div {
+    margin: 0 auto;
+    width: 100px;
+}
+
+.form-inline {
+    display: block;
+    height: 100%;
+}
+
+.form-inline label {
+    justify-content: left;
+    margin-bottom: 0;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    margin: 0 auto;
+    width: 70%;
+}
+
+#radios {
+    display: inline-block;
+    height: 50px;
+    margin: auto auto;
+    overflow-y: hidden;
+}
+
+#radios td {
+    padding: 10px 50px;
+}
+
+.butt {
+    background-color: #3ab5a4;
+    color: white;
+    width: 150;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-butt {
+    margin: 0 auto;
+}
+
+.butt:hover {
+    background: #333333;
+}
+
+.helpblock {
+    color: gray;
+}
+
+.butt {
+    background-color: #3ab5a4;
+    border-radius: 25px;
+    color: white;
+}
+
+.butt:hover {
+    background: #333333;
+}
+
+.table_container {
+    margin: 0 auto;
+    width: 1000px;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* FILE INPUT */
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    padding: 3%;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #3ab5a4;
+    font-size: 12px;
+    margin-left: 80px;
+    color: #3ab5a4;
+    background-color: white;
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: #333333;
+}
+
+.form-group {
+    margin: auto;
+}

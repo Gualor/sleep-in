@@ -1,0 +1,251 @@
+<html>
+
+<head>
+    <title> SleepIN - Edit User </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="static/images/icons/sin.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="static/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="static/css/editUser.css">
+
+</head>
+
+<body style="background-color: #d0d0d0">
+
+    <!--SIDEBAR MENU==============================================================================-->
+    <div id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <div id="avatar-cont">
+                <img id="avatar" src="static/images/tech_avatar.png" width="100">
+            </div>
+            <div id="name-cont">
+                <center>
+                    <h4> {{ first }} {{ sur }} </h4>
+                </center>
+            </div>
+            <div id="funct-container">
+                <li><a href="addUser"> Add User</a></li>
+                <li><a href="selectUser"> Edit/Delete User</a></li>
+                <li><a href="login">Log out</a></li>
+            </div>
+        </ul>
+    </div>
+
+    <!--BANNER==============================================================================-->
+    <div id="banner">
+        <div id="image">
+            <center><a href="techadmin"><img src="static/images/artboard.png" width="300"></a></center>
+        </div>
+    </div>
+</body>
+<!--FORM==============================================================================-->
+<center>
+    <form class="form-inline" action="" method="post" style="background-color: #d0d0d0" onsubmit="return confirm('Do you really want to submit the form?');">
+        <fieldset>
+            </br>
+
+            <div class="table_container">
+                </br>
+                <!-- Form Name -->
+                <legend>
+                    <h3>Edit User</h3>
+                </legend>
+
+
+                <!-- ID-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">ID:</label>
+                    <div class="col-md-4">
+                        <input id="id" name="id" type="text" placeholder="id" class="form-control input-md" value="{{
+          request.form.id }}{{ user['ID'] }}" readonly>
+                        </br>
+                    </div>
+                </div>
+
+                <!-- USERNAME-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">Username:</label>
+                    <div class="col-md-4">
+                        <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" value="{{
+          request.form.username }}{{ user['Username'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- PASSWORD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="specialization">Password:</label>
+                    <div class="col-md-4">
+                        <input id="password" name="password" type="text" placeholder="Password" class="form-control input-md" value="{{
+          request.form.password }}{{ user['Password'] }}">
+                        </br>
+                    </div>
+                </div>
+
+                <!-- USERTYPE -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="usertype">User type: </label>
+                    <div class="col-md-4">
+                        <select id="usertype" name="usertype" class="form-control" value="{{
+          request.form.usertype }}{{ user['UserType'] }}">
+                            {% if user['UserType'] == 'T' %}
+                            <option value="T">Technical Administrator</option>
+                            <option value="P">Patient</option>
+                            <option value="M">Specialized Practitioner</option>
+                            {% elif user['UserType'] == 'P' %}
+                            <option value="P">Patient</option>
+                            <option value="M">Specialized Practitioner</option>
+                            <option value="T">Technical Administrator</option>
+                            {% elif user['UserType'] == 'M' %}
+                            <option value="M">Specialized Practitioner</option>
+                            <option value="T">Technical Administrator</option>
+                            <option value="P">Patient</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- SPECIALISATION-->
+                <div class="form-group" id="spec-div">
+                    <label class="col-md-4 control-label" for="specialization">Specialization:</label>
+                    <div class="col-md-4">
+                        <input id="specialization" name="specialization" type="text" placeholder="Insert practitioner specialization" class="form-control input-md" value="{{
+          request.form.specialization }}{{ user['Specialization'] }}">
+                        </br>
+                        <span id="help-block" style="color:grey"></span>
+                    </div>
+                </div>
+
+                <!-- UNIT-->
+                <div class="form-group" id="unit-div">
+                    <label class="col-md-4 control-label" for="unit">Unit: </label>
+                    <div class="col-md-4">
+                        <input id="unit" name="unit" type="text" placeholder="Insert practitioner unit" class="form-control input-md" value="{{
+          request.form.unit }}{{ user['Unit'] }}">
+                        </br>
+                        <span id="help-block" style="color:grey"></span>
+                    </div>
+                </div>
+
+                <!-- FIRST NAME-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="firstname">First name:</label>
+                    <div class="col-md-4">
+                        <input id="firstname" name="firstname" type="text" placeholder="Insert first name" class="form-control input-md" value="{{
+          request.form.firstname }}{{ user['FirstName'] }}">
+
+                    </div>
+                </div>
+
+                <!-- SURNAME-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="surname">Surname:</label>
+                    <div class="col-md-4">
+                        <input id="surname" name="surname" type="text" placeholder="Insert surname" class="form-control input-md" value="{{
+          request.form.surname }}{{ user['Surname'] }}">
+
+                    </div>
+                </div>
+
+                <!-- FC-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="city">Fiscal Code:</label>
+                    <div class="col-md-4">
+                        <input id="fc" name="fc" type="text" placeholder="Insert FC" class="form-control input-md" value="{{
+          request.form.fc }}{{ user['FiscalCode'] }}">
+
+                    </div>
+                </div>
+
+                <!-- DATE OF BIRTH-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="dob">Date of birth:</label>
+                    <div class="col-md-4">
+                        <input id="dob" name="dob" type="text" placeholder="DD-MM-YYYY" class="form-control input-md" value="{{
+          request.form.dob }}{{ user['DateOfBirth'] }}">
+
+                    </div>
+                </div>
+
+
+                <!-- SEX-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="radios">Sex: </label>
+                    <table id="radios">
+                        <tr>
+                            <td>
+                                {% if user['Sex'] == 'M' %}
+                                <label class="radio-inline" for="radios-0">
+                                    <input type="radio" name="sex" id="radios-0" value="M" checked="checked">
+                                    <div style="margin-left: 10px"> M</div>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-inline" for="radios-1">
+                                    <input type="radio" name="sex" id="radios-1" value="F">
+                                    <div style="margin-left: 10px"> F</div>
+                                </label>
+                                {% elif user['Sex'] == 'F' %}
+                                <label class="radio-inline" for="radios-0">
+                                    <input type="radio" name="sex" id="radios-0" value="M">
+                                    <div style="margin-left: 10px"> M</div>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-inline" for="radios-1">
+                                    <input type="radio" name="sex" id="radios-1" value="F" checked="checked">
+                                    <div style="margin-left: 10px"> F</div>
+                                </label>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                </br>
+                <div class="form-group">
+                    <div id="edit">
+                        <input id="adduser" name="nome" type="submit" class="btn butt" value="EDIT USER">
+                    </div>
+                    <div id="delete">
+                        <input id="adduser" name="nome" type="submit" class="btn dbutt" value="DELETE USER">
+                    </div>
+                    </br>
+                </div>
+                </br>
+            </div>
+            </br>
+        </fieldset>
+    </form>
+
+
+</center>
+
+<!--========================================================================================-->
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="static/js/dashboard.js"></script>
+<script src="static/js/hide-fields.js"></script>
+
+</html>

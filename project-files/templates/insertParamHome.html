@@ -1,0 +1,189 @@
+<html>
+
+<head>
+    <title> SleepIN - Insert Parameters </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="static/images/icons/sin.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="static/css/insertParameters.css">
+    <link rel="stylesheet" type="text/css" href="static/css/dashboard.css">
+</head>
+
+<body style="background-color: #d0d0d0">
+    <!-- -->
+    <style>
+        .helpblock {
+            color: gray;
+        }
+
+        .butt {
+            background-color: #3ab5a4;
+            border-radius: 25px;
+            width: 50%;
+            color: white;
+        }
+
+        .butt:hover {
+            background: #333333;
+        }
+
+        .table_container {
+            margin: 0 auto;
+            width: 1000px;
+            background-color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        }
+
+    </style>
+
+    <!--SIDEBAR MENU==============================================================================-->
+    <div id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <div id="avatar-cont">
+                <img id="avatar" src="static/images/pat_avatar.png" width="100">
+            </div>
+            <div id="name-cont">
+                <center>
+                    <h4> {{ first }} {{ sur }} </h4>
+                </center>
+            </div>
+            <div id="funct-container">
+                <li><a href="insertParamHome"> Insert Parameters</a></li>
+                <li><a href="visualizeStatistics"> Visualize Parameters</a></li>
+                <li><a href="psqi">PSQI Test</a></li>
+                <li><a href="sleepEff">Sleep Efficency</a></li>
+                <li><a href="login">Log out</a></li>
+            </div>
+        </ul>
+    </div>
+
+
+
+
+    <!--BANNER==============================================================================-->
+    <div id="banner">
+        <div id="image">
+            <center><a href="patient"><img src="static/images/artboard.png" width="300"></a></center>
+        </div>
+    </div>
+</body>
+<!--FORM==============================================================================-->
+<center>
+    <form class="form-inline" action="" method="post" enctype=multipart/form-data style="background-color: #d0d0d0">
+        <fieldset>
+            </br>
+
+            <div class="table_container">
+                </br>
+                <legend>
+                    <h3>Insert Parameters:</h3>
+                </legend>
+                <!-- HEIGHT-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="height">Height:</label>
+                    <div class="col-md-4">
+                        <input name="height" type="text" placeholder="cm" class="form-control input-md" value="{{
+          request.form.height }}" required>
+                    </div>
+                </div>
+
+                <!-- WEIGHT-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="weight">Weight:</label>
+                    <div class="col-md-4">
+                        <input name="weight" type="text" placeholder="Kg" class="form-control input-md" value="{{
+          request.form.weight }}" required>
+                    </div>
+                </div>
+
+
+                <!-- FOOD CALORIES-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="foodcalories">Food Calories:</label>
+                    <div class="col-md-4">
+                        <input name="foodcalories" type="text" placeholder="kcal" class="form-control input-md" value="{{
+          request.form.foodcalories }}" required>
+                    </div>
+                </div>
+
+                <!-- HOURS OF ACTIVITY-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="hoursofactivity">Hours of activity:</label>
+                    <div class="col-md-4">
+                        <input name="hoursofactivity" type="text" placeholder="Hours" class="form-control input-md" value="{{
+          request.form.hoursofactivity}}" required>
+                    </div>
+                </div>
+                </br>
+
+                <!-- FILES-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="hoursofactivity">Upload file from wearable:</label>
+                    <div class="col-md-4">
+                        <input type="file" name="file" class="inputfile" id="file" data-multiple-caption="{count} files selected" multiple / required>
+                        <label id="file-btn" for="file">Choose a file</label>
+                    </div>
+                </div>
+                </br>
+                </br>
+                <div class="col-md-4">
+                    <input id="insert" type="submit" class="btn butt" value="Insert">
+                </div>
+                </br>
+            </div>
+
+        </fieldset>
+    </form>
+
+
+</center>
+
+<!--========================================================================================-->
+
+
+
+<script src="static/js/dashboard.js"></script>
+<script>
+    var inputs = document.querySelectorAll('.inputfile');
+    Array.prototype.forEach.call(inputs, function(input) {
+        var label = input.nextElementSibling,
+            labelVal = label.innerHTML;
+        console.log(labelVal);
+        input.addEventListener('change', function(e) {
+            var fileName = '';
+            if (this.files && this.files.length > 1)
+                fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+            else
+                fileName = e.target.value.split("\\").pop();
+            
+             console.log(fileName);
+            
+            if (fileName)
+                label.innerHTML = fileName;
+            else
+                label.innerHTML = labelVal;
+        });
+    });
+
+</script>
+
+</html>

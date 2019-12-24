@@ -1,0 +1,183 @@
+<html>
+
+<head>
+    <title> SleepIN - Select Patient </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="static/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="static/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="static/css/selectUser.css">
+
+
+</head>
+
+<body style="background-color: #d0d0d0">
+    <!-- -->
+    <style>
+        .helpblock {
+            color: gray;
+        }
+
+
+
+        .table_container {
+            margin: 0 auto;
+            width: 1000px;
+            background-color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        }
+
+        th,
+        td {
+            padding: 10px;
+
+        }
+
+
+        .my-custom-scrollbar {
+            position: relative;
+            height: 200px;
+            overflow: auto;
+        }
+
+        .table-wrapper-scroll-y {
+            display: block;
+        }
+
+        form {
+            height: 100%;
+            z-index: 0;
+        }
+
+        #users {
+            width: 300px;
+        }
+
+    </style>
+
+    <!--SIDEBAR MENU==============================================================================-->
+    <div id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <div id="avatar-cont">
+                <img id="avatar" src="static/images/med_avatar.png" width="100">
+            </div>
+            <div id="name-cont">
+                <center>
+                    <h4> {{ first }} {{ sur }} </h4>
+                </center>
+            </div>
+            <div id="funct-container">
+                <li><a href="selectUserBook"> Book visit</a></li>
+                <li><a href="selectVisit"> Edit visit </a></li>
+                <li><a href="selectUserThresh"> Set thresholds </a></li>
+                <li><a href="selectPatAbno"> Check abnormalities </a></li>
+                <li><a href="selectUserParam"> Visualize statistics </a></li>
+                <li><a href="login"> Log out</a></li>
+            </div>
+        </ul>
+    </div>
+
+    <!--BANNER==============================================================================-->
+    <div id="banner">
+        <div id="image">
+            <center><a href="medician"><img src="static/images/artboard.png" width="300"></a></center>
+        </div>
+    </div>
+</body>
+<!--CURRENT USERS ==============================================================================-->
+<form action="" method="post" style="background-color: #d0d0d0">
+    </br>
+    <div class="table_container">
+        </br>
+        <center>
+            <h3 style="color: black">Select Patient</h3>
+            </br>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="username">Search:</label>
+                <div class="col-md-4">
+                    <input id="search" type="text" placeholder="Search by name" onkeyup="filterUsernames()" class="form-control input-md" name="search">
+                    <input id="hidden_username" type="text" placeholder="Search by username" onkeyup="filterUsernames()" class="form-control input-md" name="username" style="display: none">
+                </div>
+            </div>
+
+
+            </br>
+
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <center>
+                    <table id="users" onclick="selectUser(event)">
+                        <tr style="color: gray">
+                            <th>ID</th>
+                            <th>First name</th>
+                            <th>Surname</th>
+                        </tr>
+                        <!-- loop through the users we passed in the app. -->
+                        {% for user in user %}
+                        <tr id="userrow" onclick="toggleUser(event)">
+                            <td>{{ user[0] }}</td>
+                            <td id="name">{{ user[6] }}</td>
+                            <td>{{ user[7] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </center>
+            </div>
+
+            </br>
+            <div class="form-group">
+                
+                    <input id="selectuser" class="btn butt" type="submit" value="SELECT">
+                
+                </br>
+            </div>
+        </center>
+    </div>
+    </br>
+</form>
+
+
+<script src="static/js/dashboard.js"></script>
+<script src="static/js/selectUser.js"></script>
+
+
+<!--SELECTABLE ROWS  -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+    $('#users').click(function(e) {
+        var name = $(e.target.parentNode).find('td').eq(1).text();
+        var surname = $(e.target.parentNode).find('td').eq(2).text();
+        var user = parseInt($(e.target.parentNode).find('td').eq(0).text(), 10);
+       
+        // document.getElementById("adduser").value = user;
+        document.getElementById("search").value = name.concat(" "+ surname);
+        document.getElementById("hidden_username").value = user;
+
+        $(e.target.parentNode).addClass('active').siblings().removeClass('active');
+        console.log(user);
+    })
+
+</script>
+
+
+</html>
