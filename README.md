@@ -1,8 +1,23 @@
 # sleep-in
 Online platform for sleep care telemonitoring.
 
-## Screenshots
+This is a group project assignment from the Medical Informatics course of Politecnico di Milano during the second semester of 2018/2019 academic year.
 
+## Project description
+This year project assignment consisted in the developing of "A monitoring system for sleep quality" which was subdivided into the following subgoals:
+- Design a database and write a complete report by using UML language to formalize the choices made (the report with use case diagram, class diagram and entity-relashionship diagram can be found in the uml-folder of this repo).
+- Implement a [Database Management System](https://en.wikipedia.org/wiki/Database#Database_management_system) (DBMS) for efficient medical data retrieval from the database.
+- Develop an application that implements all the functionalities requested by the assignment alongside a [Graphical User Interface](https://en.wikipedia.org/wiki/Graphical_user_interface) (GUI) for an intuitive and easy access to the platform.
+
+## Our implementation
+For our implemention, our group had complete freedom of choice regarding the tools and technical details to carry out this project. While doing the entire project by using Microsoft Access was certainly an option (as was the suggested software for this project) we decided to develop a web application from scratch.
+
+This application has a 3 layer architecture:
+1. The lower layer is the database itself which is managed by using the python module SQLite, responsible for the querying of the tables.
+2. The middle layer is the server upon which the web application is built, in this case we chose to use the python framework flask which is responsible for managing all HTTP requests as well as the cookies needed for handling user sessions.
+3. The top layer is the frontend represented by HTML pages that use Jinja to retrieve and send data back to the Flask server. Javascript is also used to make the web pages dynamic.
+
+## Screenshots
 <img src="images/patient_dashboard.png">
 <img src="images/doctor_dashboard.png">
 <img src="images/tech_dashboard.png">
